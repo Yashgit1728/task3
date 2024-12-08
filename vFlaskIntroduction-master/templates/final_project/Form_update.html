@@ -6,27 +6,30 @@
 
 {% block body %}
 <div class="form-container">
-    <h1 style="text-align: center">Update Employee Details</h1>
+    
+
+    <h1 style="text-align: center">Update Student Application Form</h1>
 
     <div class="form">
         <form action="/update_form/{{project.id}}" method="POST" enctype="multipart/form-data">
 
         
-        <label for="pName">Product Name:</label><br/>
+        <label for="pName">Student Name:</label><br/>
         <input type="text" name="pName" id="pName" value="{{ project.task }}" required><br/><br/>
 
         <label for="product-type">Product Type:</label><br/>
         <select id="product-type" name="product_type" required>
-            <option value="Electronics" {% if project.category == 'Electronics' %}selected{% endif %}>Electronics</option>
-            <option value="Groceries" {% if project.category == 'Groceries' %}selected{% endif %}>Groceries</option>
-            <option value="Clothes" {% if project.category == 'Clothes' %}selected{% endif %}>Clothes</option>
+            <option value="Computer Science" {% if project.category == 'Computer Science' %}selected{% endif %}>Computer Science</option>
+            <option value="Mechanical" {% if project.category == 'Mechanical' %}selected{% endif %}>Mechanical</option>
+            <option value="IT" {% if project.category == 'IT' %}selected{% endif %}>IT</option>
+            <option value="Civil" {% if project.category == 'Civil' %}selected{% endif %}>Civil</option>
         </select>
         <br/><br/>
 
-        <label for="pr">Product Quality (1-10):</label><br/>
-        <input type="number" name="pr" id="pr" min="1" max="10" value="{{ project.priority }}" required><br/><br/>
+        <label for="pr">Age:</label><br/>
+        <input type="number" name="pr" id="pr" value="{{ project.priority }}" required><br/><br/>
 
-        <label for="due-date">Purchased Date:</label><br/>
+        <label for="due-date">Graduation Date:</label><br/>
         <input type="date" id="due-date" name="due_date" value="{{ project.due_date }}" required><br/><br/>
 
         
@@ -34,11 +37,10 @@
        
 
         <!-- File Upload -->
-        <label for="file-upload">Upload image or file (
-            Optional):</label><br/>
+        <label for="file-upload">Upload Resume:</label><br/>
         <input type="file" id="file-upload" name="file_upload"><br/><br/>
 
-        <button class="btn" type="submit">Update Product Details</button>
+        <button class="btn" type="submit">Update Form</button>
         </form>
     </div>
     <div style="text-align: left; margin-top:20px;">

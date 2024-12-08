@@ -1,59 +1,79 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Shopping Cart</title>
+<title>Job Application Form</title>
 {% endblock %}
 
 {% block body %}
-<div class="form-container">
-    <h1>Shopping Cart</h1>
-    <h3>Describe your product</h3>
-    <form action="/final_project" method="POST" enctype="multipart/form-data">
-        <label for="PN">Product Name:</label><br/>
-        <input type="text" name="pName" id="pName" required><br><br> 
+<div class="container">
+    <!-- Main Heading -->
+    <h1>Job Application Form</h1>
+    <hr>
 
-        <label for="Project-type">Product Type:</label><br/>
-        <select id="product-type" name="product_type" required>
-            <option value="">Select Product type</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Groceries">Groceries</option>
-            <option value="Clothes">Clothes</option>
-        </select>
-        <br><br> 
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form method="GET" action="/final_project">
+            <label for="search-query">Search Students:</label>
+            <input type="text" id="search-query" name="search_query" placeholder="Search Students">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
-        <label for="priority">Product Quality (1-10):</label><br/>
-        <input type="number" name="pr" id="pr" min="1" max="10" required><br><br> 
+    <!-- Add Student Form -->
+    <h3>Enter Student Details</h3>
+    <form action="/final_project" method="POST" enctype="multipart/form-data" class="add-product-form">
+        <div class="form-group">
+            <label for="pName">Student Name:</label>
+            <input type="text" name="pName" id="pName" placeholder="Student Name" required>
+        </div>
 
-        <label for="due-date">Purchased Date:</label><br/>
-        <input type="date" id="due-date" name="due_date" required><br><br>
+        <div class="form-group">
+            <label for="product-type">Specialization:</label>
+            <select id="product-type" name="product_type" required>
+                <option value="">Select Specialization</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="IT">IT</option>
+                <option value="Civil">Civil</option>
+            </select>
+        </div>
 
-        <label for="file-upload">Upload image or file (Optional):</label><br/>
-        <input type="file" id="file-upload" name="file_upload"><br><br>
+        <div class="form-group">
+            <label for="pr">Age:</label>
+            <input type="number" name="pr" id="pr" placeholder="Age" required>
+        </div>
 
-        <input type="submit" value="Add Product" id="sub">
+        <div class="form-group">
+            <label for="due-date">Graduation Date:</label>
+            <input type="date" id="due-date" name="due_date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="file-upload">Upload Resume:</label>
+            <input type="file" id="file-upload" name="file_upload">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Add Student">
+        </div>
     </form>
 
-    <h1>Existing Products</h1>
-    <form method="GET" action="/final_project" style="margin-bottom: 20px;">
-        <label for="search-query">Search Product:</label>
-        <input type="text" id="search-query" name="search_query" placeholder="Enter product name or type" style="margin-right: 10px;">
-        <button type="submit">Search</button>
-    </form>
-
+    <!-- Existing Students Section -->
+    <h3>Applied Students</h3>
     {% if projects|length < 1 %}
         {% if search_query %}
-            <h4 style="text-align: center; color: red;">No items found for your search: "{{ search_query }}"</h4>
+            <h4 style="text-align: center; color: red;">No students found for your search: "{{ search_query }}"</h4>
         {% else %}
-            <h4 style="text-align: center;">There are no Products found. Add a New Product!</h4>
+            <h4 style="text-align: center;">There are no applications found. Add a New application form!</h4>
         {% endif %}
     {% else %}
         <table class="table_style">
             <tr>
-                <th><a href="?sort_column=task">Product Name</a></th>
-                <th><a href="?sort_column=due_date">Purchased Date</a></th>
-                <th>Category</th>
-                <th>Product Quality (1-10)</th>
-                <th>Image or file</th>
+                <th><a href="?sort_column=task">Student Name</a></th>
+                <th><a href="?sort_column=due_date">Graduation Date</a></th>
+                <th>Specialization</th>
+                <th>Age</th>
+                <th>Resume</th>
                 <th>Actions</th>
             </tr>
             {% for project in projects %}
@@ -70,17 +90,19 @@
                     </a>
                 </td>
                 <td>
-                    <a href="/update_form/{{ project.id }}">Update</a><br>
+                    <a href="/update_form/{{ project.id }}">Update</a> |
                     <a href="/delete_form/{{ project.id }}">Delete</a>
                 </td>
             </tr>
             {% endfor %}
         </table>
     {% endif %}
-    <div style="text-align: right; margin-top:20px;">
+
+    <!-- Back to Home Button -->
+    <div class="back-button">
         <a href="/" style="text-decoration: none;">
             <button class="btn">Back to Home</button>
-          </a>
+        </a>
     </div>
 </div>
 {% endblock %}
