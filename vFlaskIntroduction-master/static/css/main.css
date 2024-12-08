@@ -1,0 +1,105 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+    background-color:rgb(193, 193, 118);
+    text-align: center;
+
+}
+
+.content {
+    margin: 0 auto;
+    width: 400px;
+}
+
+table, td, th {
+    border-width:0px;
+    border-bottom: 1px solid #fff;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+#content {
+    width: 70%;
+}
+body .form-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(193, 193, 118);
+    padding-bottom:50px
+}
+
+
+input{
+    width: 200px;
+    height: 21px;
+}
+select{
+    width: 195px;
+    height: 27px;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    width: 220px;
+    border-radius: 7px;
+    height: 36px;
+    cursor: pointer;
+}
+.table_style th{
+     background-color: rgb(46, 12, 12);
+     height:40px;
+     color:aliceblue
+}
+
+.table_style{
+    width:90%;
+}
+.table_style tr:hover{
+    background-color: rgb(19, 1, 1);
+    color: #fff;
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #01050a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+#del{
+    background-color: black;
+    color: white;
+    width: 75px;
+    border-radius: 7px;
+    height: 30px;
+    cursor: pointer;
+}
+
